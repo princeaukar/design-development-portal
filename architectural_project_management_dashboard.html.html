@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Horizon | Architectural & Construction Project Management</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        architect: {
+                            50: '#f4f6f8',
+                            100: '#e1e7ec',
+                            200: '#c5d2d9',
+                            300: '#9fb4c0',
+                            400: '#7592a3',
+                            500: '#587687',
+                            600: '#465e6e',
+                            700: '#394d5a',
+                            800: '#31404b',
+                            900: '#2b3740',
+                            950: '#1a2228',
+                        },
+                        accent: {
+                            gold: '#d4af37',
+                            bronze: '#cd7f32',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(43, 55, 64, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .architectural-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(117, 146, 163, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(117, 146, 163, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-architect-950 text-slate-100 dark:bg-architect-950 dark:text-slate-100 transition-colors duration-300 architectural-grid min-h-screen">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-architect-800/50 px-6 lg:px-12 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('overview')">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-gold to-accent-bronze flex items-center justify-center text-architect-950 font-bold text-xl shadow-lg">
+                <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <div>
+                <span class="text-lg font-bold tracking-wider uppercase block text-white">Apex Horizon</span>
+                <span class="text-xs text-architect-400">Architectural & Construction PM</span>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-architect-300">
+            <button onclick="switchPage('overview')" class="nav-link-btn hover:text-accent-gold transition-colors text-accent-gold">Overview</button>
+            <button onclick="switchPage('initiation')" class="nav-link-btn hover:text-accent-gold transition-colors">1. Initiation & Feasibility</button>
+            <button onclick="switchPage('schematic')" class="nav-link-btn hover:text-accent-gold transition-colors">2. Schematic (35%)</button>
+            <button onclick="switchPage('development')" class="nav-link-btn hover:text-accent-gold transition-colors">3. Development (65%)</button>
+            <button onclick="switchPage('procurement')" class="nav-link-btn hover:text-accent-gold transition-colors">4. Purchasing & Docs</button>
+            <button onclick="switchPage('field')" class="nav-link-btn hover:text-accent-gold transition-colors">5. Field & Admin</button>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+            <button id="themeToggle" class="w-9 h-9 rounded-full bg-architect-800 flex items-center justify-center text-architect-300 hover:text-white transition-colors" title="Toggle Theme">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:block text-accent-gold"></i>
+            </button>
+            <button onclick="switchPage('dashboard')" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-accent-gold text-architect-950 font-semibold text-sm hover:bg-yellow-500 transition-all shadow-md">
+                <i class="fa-solid fa-chart-line mr-2"></i> PM Portal
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Application Container -->
+    <main id="app-container" class="min-h-screen">
+        
+        <!-- PAGE 1: OVERVIEW & PROPOSAL HOMEPAGE -->
+        <div id="page-overview" class="page-view animate-fade-in">
+            <!-- Hero Section -->
+            <section class="relative px-6 lg:px-12 py-16 lg:py-24 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-architect-800/80 border border-architect-700 text-xs font-semibold text-accent-gold tracking-wide uppercase">
+                        <i class="fa-solid fa-circle-check"></i> Project ID: AH-2026-V9 Proposal Deck
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                        Sculpting Vision Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold to-accent-bronze">Structural Reality</span>
+                    </h1>
+                    <p class="text-lg text-architect-300 max-w-2xl leading-relaxed">
+                        Welcome to the complete collaborative architectural proposal and project management system. Explore live 3D models with zoom technology, financial feasibility, and active sub-pages for every project phase.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchPage('initiation')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-accent-gold to-accent-bronze text-architect-950 font-bold hover:opacity-90 transition-all shadow-lg flex items-center">
+                            Explore Proposal Sub-Pages <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                        <button onclick="switchPage('dashboard')" class="px-6 py-3 rounded-xl bg-architect-800 hover:bg-architect-700 text-white font-semibold transition-all border border-architect-700 flex items-center">
+                            <i class="fa-solid fa-sliders mr-2 text-accent-gold"></i> Live PM Dashboard
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-architect-800/80 text-architect-300">
+                        <div>
+                            <span class="block text-2xl font-bold text-white">18 Months</span>
+                            <span class="text-xs uppercase tracking-wider text-architect-400">Total Duration</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-accent-gold">$42.5M</span>
+                            <span class="text-xs uppercase tracking-wider text-architect-400">Project Budget</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-white">65%</span>
+                            <span class="text-xs uppercase tracking-wider text-architect-400">Design Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-architect-700 group">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Modern Architecture" class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x420/2b3740/ffffff?text=Apex+Horizon+Rendering'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-architect-950 via-architect-950/20 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-xs font-semibold text-accent-gold uppercase tracking-widest">Featured Concept</span>
+                            <h3 class="text-xl font-bold text-white">The Horizon Pavilion & Tower</h3>
+                            <p class="text-xs text-architect-300 mt-1">Interactive Proposal Showcase</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Proposal Sub-Page Quick Access Cards -->
+            <section class="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-accent-gold mb-2">Interactive Proposal Modules</h2>
+                    <h3 class="text-3xl font-bold text-white">Explore Project Phases & Sub-Pages</h3>
+                    <p class="text-architect-300 text-sm mt-2">Click any module to access detailed specifications, 3D zoom viewers, and procurement workflows.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div onclick="switchPage('initiation')" class="glass-panel p-8 rounded-2xl border border-architect-700 hover:border-accent-gold transition-all cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">1. Initiation & Feasibility</h4>
+                        <p class="text-architect-300 text-sm mb-4">Idea formulation, cost of money, schedule feasibility, market demand, and Go/No-Go decision gate.</p>
+                        <span class="text-xs font-bold text-accent-gold flex items-center">Open Sub-Page <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('schematic')" class="glass-panel p-8 rounded-2xl border border-architect-700 hover:border-accent-gold transition-all cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-pen-ruler"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">2. Schematic Design (35%)</h4>
+                        <p class="text-architect-300 text-sm mb-4">Initial floor plans, sketches, dimensions, and interactive 2D/3D plan toggle with zoom technology.</p>
+                        <span class="text-xs font-bold text-accent-gold flex items-center">Open Sub-Page <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('development')" class="glass-panel p-8 rounded-2xl border border-architect-700 hover:border-accent-gold transition-all cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">3. Design Development (65%)</h4>
+                        <p class="text-architect-300 text-sm mb-4">System-by-system analysis, OPM financing breakdown, bank funding, and interactive cost calculator.</p>
+                        <span class="text-xs font-bold text-accent-gold flex items-center">Open Sub-Page <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('procurement')" class="glass-panel p-8 rounded-2xl border border-architect-700 hover:border-accent-gold transition-all cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">4. Construction Docs & Purchasing</h4>
+                        <p class="text-architect-300 text-sm mb-4">Buying out the job, RFP phase solicitation, subcontractor bidding board, and shop drawing approvals.</p>
+                        <span class="text-xs font-bold text-accent-gold flex items-center">Open Sub-Page <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('field')" class="glass-panel p-8 rounded-2xl border border-architect-700 hover:border-accent-gold transition-all cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hard-hat"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">5. Field Operations & Admin</h4>
+                        <p class="text-architect-300 text-sm mb-4">Superintendent crew scheduling, construction manager financial controls, safety, and project administration.</p>
+                        <span class="text-xs font-bold text-accent-gold flex items-center">Open Sub-Page <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                    </div>
+
+                    <div onclick="switchPage('dashboard')" class="glass-panel p-8 rounded-2xl border border-architect-700 hover:border-accent-gold transition-all cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-accent-gold/20 text-accent-gold flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">6. Live PM Dashboard</h4>
+                        <p class="text-architect-300 text-sm mb-4">Unified real-time metrics, submittal tracking, budget monitoring, and milestone logs.</p>
+                        <span class="text-xs font-bold text-accent-gold flex items-center">Open Sub-Page <i class="fa-solid fa-arrow-right ml-2"></i></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SUB-PAGE 1: PROJECT INITIATION & FEASIBILITY -->
+        <div id="page-initiation" class="page-view hidden py-12 px-6 lg:px-12 max-w-7xl mx-auto animate-fade-in">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent-gold uppercase tracking-wider">Sub-Page 01</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Project Initiation & Feasibility Analysis</h2>
+                </div>
+                <button onclick="switchPage('overview')" class="px-4 py-2 rounded-lg bg-architect-800 text-architect-300 hover:text-white text-sm font-semibold border border-architect-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Overview
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-4">
+                        <h3 class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-lightbulb text-accent-gold mr-3"></i> 1. Project Initiation: Starts as an Idea</h3>
+                        <p class="text-architect-300 text-sm leading-relaxed">
+                            Every great commercial or residential landmark begins as a conceptual spark. During initiation, the owner defines the core vision, spatial requirements, and high-level objectives that guide the entire lifecycle.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-6">
+                        <h3 class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-scale-balanced text-accent-gold mr-3"></i> 2. Feasibility Evaluation & Go/No-Go Gate</h3>
+                        <p class="text-architect-300 text-sm leading-relaxed">
+                            Before committing substantial capital, a rigorous feasibility study evaluates four critical pillars:
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-architect-900/80 border border-architect-700">
+                                <h4 class="font-bold text-white text-sm mb-1"><i class="fa-solid fa-coins text-accent-gold mr-2"></i> Cost of Money</h4>
+                                <p class="text-xs text-architect-400">Interest rates, loan terms, and capital expenditure forecasting.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-architect-900/80 border border-architect-700">
+                                <h4 class="font-bold text-white text-sm mb-1"><i class="fa-solid fa-calendar-days text-accent-gold mr-2"></i> Schedule</h4>
+                                <p class="text-xs text-architect-400">Timeline feasibility from design through groundbreaking and handover.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-architect-900/80 border border-architect-700">
+                                <h4 class="font-bold text-white text-sm mb-1"><i class="fa-solid fa-wallet text-accent-gold mr-2"></i> Budget</h4>
+                                <p class="text-xs text-architect-400">Total estimated construction cost vs owner equity and debt capacity.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-architect-900/80 border border-architect-700">
+                                <h4 class="font-bold text-white text-sm mb-1"><i class="fa-solid fa-chart-line text-accent-gold mr-2"></i> Market Demand</h4>
+                                <p class="text-xs text-architect-400">Tenant absorption rates, commercial competition, and ROI projection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-architect-700 text-center">
+                        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 text-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Go / No-Go Decision</h4>
+                        <p class="text-xs text-architect-300 mt-2 mb-6">Executive review has validated all feasibility parameters for Apex Horizon.</p>
+                        <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold text-sm">
+                            STATUS: GO FOR SCHEMATIC DESIGN
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border border-architect-700">
+                        <h4 class="font-bold text-white text-sm mb-3">Quick Phase Navigation</h4>
+                        <div class="space-y-2">
+                            <button onclick="switchPage('schematic')" class="w-full text-left px-4 py-2 rounded-lg bg-architect-900 hover:bg-architect-800 text-xs font-semibold text-architect-300 hover:text-white flex items-center justify-between">
+                                <span>Next: Schematic Design (35%)</span> <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUB-PAGE 2: SCHEMATIC DESIGN (35%) WITH 3D ZOOM & MOTION VIDEO -->
+        <div id="page-schematic" class="page-view hidden py-12 px-6 lg:px-12 max-w-7xl mx-auto animate-fade-in">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent-gold uppercase tracking-wider">Sub-Page 02 • 35% Milestone</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Schematic Design & 3D Zoom Technology</h2>
+                </div>
+                <button onclick="switchPage('overview')" class="px-4 py-2 rounded-lg bg-architect-800 text-architect-300 hover:text-white text-sm font-semibold border border-architect-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Overview
+                </button>
+            </div>
+
+            <!-- Interactive 3D Motion Video Player Placeholder -->
+            <div class="glass-panel rounded-2xl p-6 border border-architect-700 mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-white flex items-center"><i class="fa-solid fa-video text-accent-gold mr-3"></i> 3D Motion Video Walkthrough (Schematic Preview)</h3>
+                    <span class="px-3 py-1 rounded-full bg-accent-gold/20 text-accent-gold text-xs font-semibold">HD 60FPS Motion</span>
+                </div>
+                <div class="relative rounded-xl overflow-hidden bg-architect-950 h-[320px] sm:h-[400px] flex items-center justify-center border border-architect-700 group">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18fefec?q=80&w=1200&auto=format&fit=crop" alt="3D Video Motion Walkthrough" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1000x400/2b3740/ffffff?text=3D+Motion+Video+Walkthrough'">
+                    <div class="absolute inset-0 bg-architect-950/40 flex items-center justify-center">
+                        <button onclick="playVideoModal()" class="w-20 h-20 rounded-full bg-accent-gold text-architect-950 flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform cursor-pointer">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-architect-200 bg-architect-900/80 backdrop-blur px-4 py-2 rounded-lg border border-architect-700">
+                        <span>Project_Horizon_Schematic_Flythrough_v2.mp4</span>
+                        <span>00:00 / 02:45</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive 3D Plan Zoom Technology Canvas Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-architect-700">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-white flex items-center"><i class="fa-solid fa-cube text-accent-gold mr-3"></i> 3D Plan Zoom Technology Viewer</h3>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="zoomCanvas(1.2)" class="px-3 py-1 rounded bg-architect-800 text-white text-xs hover:bg-architect-700" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                                <button onclick="zoomCanvas(0.8)" class="px-3 py-1 rounded bg-architect-800 text-white text-xs hover:bg-architect-700" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                                <button onclick="resetCanvasZoom()" class="px-3 py-1 rounded bg-architect-800 text-white text-xs hover:bg-architect-700">Reset</button>
+                                <button onclick="togglePlanMode()" id="planToggleBtn" class="px-3 py-1 rounded bg-accent-gold text-architect-950 text-xs font-bold">2D / 3D Toggle</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Canvas Container -->
+                        <div class="relative rounded-xl overflow-hidden bg-architect-950 h-[380px] border border-architect-700 flex items-center justify-center cursor-grab active:cursor-grabbing">
+                            <canvas id="schematicCanvas" class="w-full h-full block"></canvas>
+                            <div class="absolute bottom-3 right-3 bg-architect-900/80 backdrop-blur px-3 py-1.5 rounded-lg border border-architect-700 text-xs text-architect-300">
+                                Use Mouse Wheel / Buttons to Zoom & Rotate
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-architect-700 space-y-4">
+                        <h4 class="font-bold text-white text-base">Schematic Milestones (35%)</h4>
+                        <ul class="space-y-3 text-sm text-architect-300">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Initial spatial zoning & room layouts</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Scale pen sketches & blueprints</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Conceptual narrative ("The Story")</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Client review & approval gate</li>
+                        </ul>
+                        <button onclick="switchPage('development')" class="w-full py-3 rounded-xl bg-accent-gold text-architect-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md mt-4">
+                            Proceed to Design Development (65%) <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUB-PAGE 3: DESIGN DEVELOPMENT (65%) & OPM FINANCING -->
+        <div id="page-development" class="page-view hidden py-12 px-6 lg:px-12 max-w-7xl mx-auto animate-fade-in">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent-gold uppercase tracking-wider">Sub-Page 03 • 65% Milestone</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Design Development & OPM Financing Analysis</h2>
+                </div>
+                <button onclick="switchPage('overview')" class="px-4 py-2 rounded-lg bg-architect-800 text-architect-300 hover:text-white text-sm font-semibold border border-architect-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Overview
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-4">
+                        <h3 class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-gears text-accent-gold mr-3"></i> System-by-System Analysis</h3>
+                        <p class="text-architect-300 text-sm leading-relaxed">
+                            During the Design Development phase (reaching the 65% milestone), the selected schematic design is rigorously refined through coordinated system analysis across structural, mechanical, electrical, and plumbing engineering.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-architect-900 border border-architect-700">
+                                <h4 class="font-bold text-white text-sm">Structural Frame</h4>
+                                <p class="text-xs text-architect-400">Post-tensioned concrete & steel reinforcement load sizing.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-architect-900 border border-architect-700">
+                                <h4 class="font-bold text-white text-sm">MEP Engineering</h4>
+                                <p class="text-xs text-architect-400">Central HVAC ducts, fire safety, and plumbing riser coordination.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-4">
+                        <h3 class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-coins text-accent-gold mr-3"></i> OPM Financing & Long-Term Capital</h3>
+                        <p class="text-architect-300 text-sm leading-relaxed">
+                            Most owners walk into projects with initial capital but cannot fund 100% upfront. Developers utilize <strong>OPM (Other People's Money)</strong>, acquiring outside funds, bank loans, insurance company backing, and investor syndicates.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Cost & Budget Feasibility Calculator -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-6">
+                        <h3 class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-calculator text-accent-gold mr-3"></i> Feasibility Budget Calculator</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-architect-300 uppercase mb-2">Total Project Scope Area (Sq. Ft.)</label>
+                                <input type="number" id="calcArea" value="85000" oninput="calculateBudget()" class="w-full px-4 py-3 rounded-xl bg-architect-900 border border-architect-700 text-white font-bold focus:outline-none focus:border-accent-gold">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-architect-300 uppercase mb-2">Construction Cost per Sq. Ft. ($)</label>
+                                <input type="number" id="calcRate" value="450" oninput="calculateBudget()" class="w-full px-4 py-3 rounded-xl bg-architect-900 border border-architect-700 text-white font-bold focus:outline-none focus:border-accent-gold">
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-architect-900/90 border border-architect-700 space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-architect-400">Base Construction:</span>
+                                    <span id="resBase" class="font-bold text-white">$38,250,000</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-architect-400">Owner Equity (25%):</span>
+                                    <span id="resEquity" class="font-bold text-accent-gold">$10,625,000</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-architect-400">OPM / Bank Debt (75%):</span>
+                                    <span id="resDebt" class="font-bold text-emerald-400">$31,875,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="switchPage('procurement')" class="w-full py-3 rounded-xl bg-accent-gold text-architect-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md">
+                            Proceed to Procurement & Docs <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUB-PAGE 4: CONSTRUCTION DOCUMENTS & SUBCONTRACTOR PROCUREMENT -->
+        <div id="page-procurement" class="page-view hidden py-12 px-6 lg:px-12 max-w-7xl mx-auto animate-fade-in">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent-gold uppercase tracking-wider">Sub-Page 04 • 100% Milestone</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Construction Documents & Subcontractor Procurement</h2>
+                </div>
+                <button onclick="switchPage('overview')" class="px-4 py-2 rounded-lg bg-architect-800 text-architect-300 hover:text-white text-sm font-semibold border border-architect-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Overview
+                </button>
+            </div>
+
+            <!-- Subcontractor Procurement & Bidding Pipeline Board -->
+            <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-6 mb-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Interactive Subcontractor Bidding & "Buying Out" Board</h3>
+                        <p class="text-architect-300 text-sm">Manage RFP solicitations, bid analysis, and contract awards for specialty trades.</p>
+                    </div>
+                    <button onclick="openNewBidModal()" class="px-4 py-2 rounded-xl bg-accent-gold text-architect-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md">
+                        <i class="fa-solid fa-plus mr-2"></i> Add Subcontractor Bid
+                    </button>
+                </div>
+
+                <!-- Kanban Pipeline Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pt-4">
+                    <!-- Column 1: Solicited -->
+                    <div class="p-4 rounded-xl bg-architect-900 border border-architect-700 space-y-4">
+                        <div class="flex items-center justify-between border-b border-architect-800 pb-3">
+                            <span class="font-bold text-white text-sm">1. Solicited RFPs</span>
+                            <span class="px-2 py-0.5 rounded-full bg-architect-800 text-xs text-architect-300">3</span>
+                        </div>
+                        <div id="kanban-solicited" class="space-y-3">
+                            <div class="p-3 rounded-lg bg-architect-800/80 border border-architect-700 text-xs space-y-2">
+                                <div class="font-bold text-white">Curtain Wall Facade</div>
+                                <div class="text-architect-400">Pioneer Facades Inc.</div>
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="text-accent-gold font-semibold">$3.2M Bid</span>
+                                    <button onclick="moveKanban(this, 'received')" class="text-architect-300 hover:text-white"><i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Received -->
+                    <div class="p-4 rounded-xl bg-architect-900 border border-architect-700 space-y-4">
+                        <div class="flex items-center justify-between border-b border-architect-800 pb-3">
+                            <span class="font-bold text-white text-sm">2. Received Bids</span>
+                            <span class="px-2 py-0.5 rounded-full bg-architect-800 text-xs text-architect-300">2</span>
+                        </div>
+                        <div id="kanban-received" class="space-y-3">
+                            <div class="p-3 rounded-lg bg-architect-800/80 border border-architect-700 text-xs space-y-2">
+                                <div class="font-bold text-white">Electrical Systems</div>
+                                <div class="text-architect-400">VoltTech Power Corp</div>
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="text-accent-gold font-semibold">$4.8M Bid</span>
+                                    <button onclick="moveKanban(this, 'analyzed')" class="text-architect-300 hover:text-white"><i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Analyzed -->
+                    <div class="p-4 rounded-xl bg-architect-900 border border-architect-700 space-y-4">
+                        <div class="flex items-center justify-between border-b border-architect-800 pb-3">
+                            <span class="font-bold text-white text-sm">3. Bid Analysis</span>
+                            <span class="px-2 py-0.5 rounded-full bg-architect-800 text-xs text-architect-300">2</span>
+                        </div>
+                        <div id="kanban-analyzed" class="space-y-3">
+                            <div class="p-3 rounded-lg bg-architect-800/80 border border-architect-700 text-xs space-y-2">
+                                <div class="font-bold text-white">Structural Steel Package</div>
+                                <div class="text-architect-400">Apex Steelworks LLC</div>
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="text-accent-gold font-semibold">$7.5M Bid</span>
+                                    <button onclick="moveKanban(this, 'awarded')" class="text-architect-300 hover:text-white"><i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Awarded Contract -->
+                    <div class="p-4 rounded-xl bg-architect-900 border border-architect-700 space-y-4">
+                        <div class="flex items-center justify-between border-b border-architect-800 pb-3">
+                            <span class="font-bold text-emerald-400 text-sm">4. Awarded Contract</span>
+                            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">4</span>
+                        </div>
+                        <div id="kanban-awarded" class="space-y-3">
+                            <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs space-y-2">
+                                <div class="font-bold text-white">Foundation & Earthwork</div>
+                                <div class="text-architect-300">Terra Excavation Co.</div>
+                                <div class="text-emerald-400 font-semibold pt-1"><i class="fa-solid fa-check mr-1"></i> Contract Signed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="switchPage('field')" class="px-6 py-3 rounded-xl bg-accent-gold text-architect-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md">
+                    Proceed to Field Operations & Admin <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SUB-PAGE 5: FIELD OPERATIONS & PROJECT ADMINISTRATION -->
+        <div id="page-field" class="page-view hidden py-12 px-6 lg:px-12 max-w-7xl mx-auto animate-fade-in">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent-gold uppercase tracking-wider">Sub-Page 05 • Construction Execution</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Field Operations & Project Administration</h2>
+                </div>
+                <button onclick="switchPage('overview')" class="px-4 py-2 rounded-lg bg-architect-800 text-architect-300 hover:text-white text-sm font-semibold border border-architect-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Overview
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-hard-hat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Project Superintendent Duties</h3>
+                    <ul class="space-y-3 text-sm text-architect-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Schedule crews in proper sequence</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Choose most efficient & safest construction methods</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Direct active production process for building activities</li>
+                    </ul>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl border border-architect-700 space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-accent-gold/20 text-accent-gold flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Construction Manager Duties</h3>
+                    <ul class="space-y-3 text-sm text-architect-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Order correct materials & exact quantities</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Ensure adequate supply of necessary tools & equipment</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-accent-gold mr-3"></i> Monitor schedule, cost, and quality control tasks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="switchPage('dashboard')" class="px-6 py-3 rounded-xl bg-accent-gold text-architect-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md">
+                    Open Live PM Dashboard <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PAGE 6: LIVE PM DASHBOARD -->
+        <div id="page-dashboard" class="page-view hidden py-12 px-6 lg:px-12 max-w-7xl mx-auto animate-fade-in">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-accent-gold uppercase tracking-wider">Live System Portal</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Project Management Dashboard</h2>
+                </div>
+                <button onclick="switchPage('overview')" class="px-4 py-2 rounded-lg bg-architect-800 text-architect-300 hover:text-white text-sm font-semibold border border-architect-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Overview
+                </button>
+            </div>
+
+            <!-- Dashboard Metric Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="p-6 rounded-2xl bg-architect-900 border border-architect-700">
+                    <span class="text-xs text-architect-400 uppercase tracking-wider">Design Progress</span>
+                    <h4 class="text-3xl font-bold text-white mt-2">65.0%</h4>
+                    <span class="text-xs text-accent-gold mt-1 inline-block"><i class="fa-solid fa-arrow-up mr-1"></i> Design Development Active</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-architect-900 border border-architect-700">
+                    <span class="text-xs text-architect-400 uppercase tracking-wider">Allocated Budget</span>
+                    <h4 class="text-3xl font-bold text-white mt-2">$42,500,000</h4>
+                    <span class="text-xs text-emerald-400 mt-1 inline-block"><i class="fa-solid fa-shield-halved mr-1"></i> OPM & Bank Secured</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-architect-900 border border-architect-700">
+                    <span class="text-xs text-architect-400 uppercase tracking-wider">Subcontractor Bids</span>
+                    <h4 class="text-3xl font-bold text-white mt-2">24 / 28</h4>
+                    <span class="text-xs text-blue-400 mt-1 inline-block"><i class="fa-solid fa-file-signature mr-1"></i> RFP Phase Active</span>
+                </div>
+                <div class="p-6 rounded-2xl bg-architect-900 border border-architect-700">
+                    <span class="text-xs text-architect-400 uppercase tracking-wider">Safety Rating</span>
+                    <h4 class="text-3xl font-bold text-white mt-2">100%</h4>
+                    <span class="text-xs text-emerald-400 mt-1 inline-block"><i class="fa-solid fa-check-circle mr-1"></i> Zero Incidents</span>
+                </div>
+            </div>
+
+            <!-- Submittals Table -->
+            <div class="glass-panel rounded-2xl p-6 border border-architect-700">
+                <h4 class="text-lg font-bold text-white mb-4">Recent Submittals & Shop Drawings Log</h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-architect-300">
+                        <thead class="border-b border-architect-800 text-xs uppercase text-architect-400">
+                            <tr>
+                                <th class="pb-3">Submittal Item</th>
+                                <th class="pb-3">Trade / Subcontractor</th>
+                                <th class="pb-3">Stage</th>
+                                <th class="pb-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-architect-800/60">
+                            <tr>
+                                <td class="py-3 font-medium text-white">Structural Steel Shop Drawings v2</td>
+                                <td>Apex Steelworks LLC</td>
+                                <td>Design Development</td>
+                                <td><span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-semibold">Approved</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-medium text-white">HVAC Mechanical Layout</td>
+                                <td>Climatech Engineers</td>
+                                <td>Schematic Design (35%)</td>
+                                <td><span class="px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-semibold">In Review</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Custom Modal for Video / Notifications -->
+    <div id="customModal" class="fixed inset-0 z-50 bg-architect-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-panel p-6 rounded-2xl max-w-lg w-full border border-architect-700 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-architect-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <div id="modalContent" class="space-y-4">
+                <!-- Dynamically loaded content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-architect-800 bg-architect-950 px-6 lg:px-12 py-12 text-center text-architect-400 text-sm mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-white">Apex Horizon Architecture & Construction</span>
+            </div>
+            <p class="text-xs">&copy; 2026 Apex Horizon PM. All rights reserved. Built with professional precision.</p>
+        </div>
+    </footer>
+
+    <!-- Three.js Library for 3D Zoom Technology & Canvas View -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Theme Toggle Script
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+            }
+        });
+
+        // Page Router Script
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.add('hidden'));
+
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Re-init ThreeJS canvas if switching to schematic
+            if (pageId === 'schematic') {
+                setTimeout(initThreeCanvas, 150);
+            }
+        }
+
+        // Budget Calculator Script
+        function calculateBudget() {
+            const area = parseFloat(document.getElementById('calcArea').value) || 0;
+            const rate = parseFloat(document.getElementById('calcRate').value) || 0;
+            const total = area * rate;
+            const equity = total * 0.25;
+            const debt = total * 0.75;
+
+            document.getElementById('resBase').innerText = '$' + total.toLocaleString();
+            document.getElementById('resEquity').innerText = '$' + equity.toLocaleString();
+            document.getElementById('resDebt').innerText = '$' + debt.toLocaleString();
+        }
+
+        // Kanban Board Move Helper
+        function moveKanban(btn, targetColumnId) {
+            const card = btn.closest('.p-3');
+            const targetContainer = document.getElementById(`kanban-${targetColumnId}`);
+            if (card && targetContainer) {
+                // Change button icon/action
+                btn.remove();
+                targetContainer.appendChild(card);
+            }
+        }
+
+        // Modal Helpers
+        function playVideoModal() {
+            const modal = document.getElementById('customModal');
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <h3 class="text-xl font-bold text-white mb-2"><i class="fa-solid fa-video text-accent-gold mr-2"></i> 3D Motion Video Walkthrough</h3>
+                <p class="text-xs text-architect-300 mb-4">High-definition flythrough simulation of the Apex Horizon schematic design.</p>
+                <div class="bg-architect-900 rounded-xl h-64 flex items-center justify-center border border-architect-700 relative overflow-hidden">
+                    <div class="text-center space-y-3">
+                        <i class="fa-solid fa-circle-play text-5xl text-accent-gold animate-pulse"></i>
+                        <p class="text-sm font-semibold text-white">Streaming HD 3D Motion Video...</p>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        // Three.js 3D Zoom Technology Canvas Implementation
+        let scene, camera, renderer, architecturalModel, is3DMode = true;
+
+        function initThreeCanvas() {
+            const canvasContainer = document.getElementById('schematicCanvas');
+            if (!canvasContainer || canvasContainer.hasChildNodes()) return;
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(45, canvasContainer.clientWidth / canvasContainer.clientHeight, 0.1, 1000);
+            
+            renderer = new THREE.WebGLRenderer({ canvas: canvasContainer, antialias: true, alpha: true });
+            renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xd4af37, 1);
+            directionalLight.position.set(10, 20, 15);
+            scene.add(directionalLight);
+
+            // Architectural Building Model group
+            architecturalModel = new THREE.Group();
+
+            // Base Floor
+            const floorGeo = new THREE.BoxGeometry(6, 0.2, 6);
+            const floorMat = new THREE.MeshStandardMaterial({ color: 0x465e6e });
+            const floor = new THREE.Mesh(floorGeo, floorMat);
+            architecturalModel.add(floor);
+
+            // Towers / Columns
+            const colMat = new THREE.MeshStandardMaterial({ color: 0xd4af37 });
+            for (let x = -2.2; x <= 2.2; x += 4.4) {
+                for (let z = -2.2; z <= 2.2; z += 4.4) {
+                    const colGeo = new THREE.BoxGeometry(0.6, 4, 0.6);
+                    const col = new THREE.Mesh(colGeo, colMat);
+                    col.position.set(x, 2, z);
+                    architecturalModel.add(col);
+                }
+            }
+
+            // Glass Facade Layers
+            const glassMat = new THREE.MeshStandardMaterial({ color: 0x7592a3, transparent: true, opacity: 0.6 });
+            const glassGeo = new THREE.BoxGeometry(5.2, 3.6, 5.2);
+            const glassBox = new THREE.Mesh(glassGeo, glassMat);
+            glassBox.position.set(0, 2, 0);
+            architecturalModel.add(glassBox);
+
+            scene.add(architecturalModel);
+            camera.position.set(12, 10, 12);
+            camera.lookAt(0, 1, 0);
+
+            animateThree();
+        }
+
+        function animateThree() {
+            if (!renderer) return;
+            requestAnimationFrame(animateThree);
+            if (architecturalModel) {
+                architecturalModel.rotation.y += 0.005;
+            }
+            renderer.render(scene, camera);
+        }
+
+        function zoomCanvas(factor) {
+            if (camera) {
+                camera.position.multiplyScalar(factor);
+            }
+        }
+
+        function resetCanvasZoom() {
+            if (camera) {
+                camera.position.set(12, 10, 12);
+                camera.lookAt(0, 1, 0);
+            }
+        }
+
+        function togglePlanMode() {
+            is3DMode = !is3DMode;
+            if (architecturalModel) {
+                architecturalModel.rotation.x = is3DMode ? 0 : Math.PI / 2;
+            }
+        }
+    </script>
+</body>
+</html>
